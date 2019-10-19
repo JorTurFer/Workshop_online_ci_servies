@@ -15,3 +15,4 @@ only_commits:
     - appveyor.yml
     - src/
     - test/
+    
