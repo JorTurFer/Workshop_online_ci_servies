@@ -11,6 +11,6 @@ jobs:
     - uses: actions/checkout@v2
     - uses: actions/setup-dotnet@v1
       with:
-        dotnet-version: '3.1.100' # SDK Version to use.
+        dotnet-version: '2.2.0' # SDK Version to use.
     - run: dotnet build "Ejemplo NetCore.sln"
     - run: dotnet test "Ejemplo NetCore.sln"
