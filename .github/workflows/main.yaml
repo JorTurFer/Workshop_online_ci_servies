@@ -9,6 +9,8 @@ jobs:
         agent: [ 'windows-latest', 'ubuntu-latest', 'macos-latest' ] 
     runs-on: ${{ matrix.agent }}
     steps:
+    - name: Checkout submodules
+      uses: textbook/git-checkout-submodule-action@master
     - uses: actions/checkout@v1
     - name: configure
       run: mkdir build && cd build && cmake ./..
