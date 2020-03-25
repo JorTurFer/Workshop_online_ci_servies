@@ -14,7 +14,7 @@ jobs:
     - name: configure
       run: cd "src/C++ Library" && mkdir build && cd build && cmake ./..
     - name: build
-      run: cmake --build build
+      run: cmake --build "src/C++ Library/build"
       
     # C# section
     - run: cd ./../../PostNetCoreNativo 
