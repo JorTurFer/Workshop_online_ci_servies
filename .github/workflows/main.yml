@@ -8,6 +8,7 @@ jobs:
     strategy:
       matrix:
         agent: [ 'windows-latest', 'ubuntu-latest', 'macos-latest' ]  
+        configuration: ['debug', 'release']
     runs-on: ${{ matrix.agent }}
     name: Integration in ${{matrix.agent}}
     steps:
@@ -15,5 +16,5 @@ jobs:
     - uses: actions/setup-dotnet@v1
       with:
         dotnet-version: '2.2.108' # SDK Version to use.
-    - run: dotnet build "Ejemplo NetCore.sln"
-    - run: dotnet test "Ejemplo NetCore.sln"
+    - run: dotnet build "Ejemplo NetCore.sln" -c ${{matrix.configuration}}
+    - run: dotnet test "Ejemplo NetCore.sln" -c ${{matrix.configuration}}
