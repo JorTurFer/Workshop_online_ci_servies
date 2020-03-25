@@ -1,0 +1,15 @@
+name: CI
+
+on: [push]
+
+jobs:  
+  build:
+    strategy:
+      matrix:
+        agent: [ 'windows-latest', 'ubuntu-latest', 'macos-latest' ]  :
+ 
+    runs-on: ${{ matrix.agent }}
+
+    steps:
+    - name: Build CMake
+      uses: ashutoshvarma/action-cmake-build@v1
