@@ -1,0 +1,32 @@
+name: CI
+
+on: [push]
+
+jobs:  
+  build:
+    strategy:
+      matrix:
+        agent: [ 'windows-latest', 'ubuntu-latest', 'macos-latest' ] 
+    runs-on: ${{ matrix.agent }}
+    steps:
+    # C++ section      
+    - uses: actions/checkout@v1
+    - name: configure
+      run: cd src/C++ Library && mkdir build && cd build && cmake ./..
+    - name: build
+      run: cmake --build build
+      
+    # C# section
+    - run: cd ./../../PostNetCoreNativo 
+    - uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: '2.2.108' # SDK Version to use. 
+    - run: dotnet build "PostNetCoreNativo.sln" -c release
+    - name: Copy file
+      uses: canastro/copy-action@0.0.2
+      with:
+        source: src/C++ Library/build/release/*
+        # Target file
+        target: test/NativeMehotdsTests/bin/release/netcoreapp2.1
+    - run: dotnet test "PostNetCoreNativo.sln"
+     
