@@ -16,9 +16,6 @@ jobs:
 
   strategy:
     matrix:
-      Visual Studio 2015:
-        imageName: 'vs2015-win2012r2'
-        generator: 'Visual Studio 14 2015'
       Visual Studio 2017:
         imageName: 'vs2017-win2016'
         generator: 'Visual Studio 15 2017'
@@ -48,8 +45,6 @@ jobs:
 
   strategy:
     matrix:
-      High Sierra:
-        imageName: 'macos-10.13'
       Mojave:
         imageName: 'macos-10.14'
       Ubuntu:
