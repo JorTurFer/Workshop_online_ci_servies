@@ -84,8 +84,6 @@ jobs:
 
   strategy:
     matrix:
-      High Sierra:
-        imageName: 'macos-10.13'
       Mojave:
         imageName: 'macos-10.14'
       Ubuntu:
